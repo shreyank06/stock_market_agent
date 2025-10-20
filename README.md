@@ -36,3 +36,9 @@ streamlit run run.py
 - AI Financial Assistant: Provides dynamic, real-time responses to financial queries and market-related questions, with image analysis capabilities.
 - Portfolio simulator: Enables users to choose various portfolio allocations and provides them with the expected return, annual volatility, and Sharpe ratio for a specified period, along with additional features such as risk analysis and optimization suggestions.
 - Backtesting: Permits users to backtest diverse strategies, producing performance metrics to assess their effectiveness.
+
+7. Agent URL
+
+```
+https://shreyank06-stock-market-agent-run-rxo2oy.streamlit.app/
+```
