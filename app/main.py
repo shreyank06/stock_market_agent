@@ -24,6 +24,10 @@ def main():
         initial_sidebar_state="expanded"
     )
     
+    # Initialize session state for page navigation
+    if 'page' not in st.session_state:
+        st.session_state.page = "Home"
+    
     # Custom CSS for better UI
     st.markdown("""
     <style>
@@ -68,24 +72,33 @@ def main():
     # Add logo to sidebar
     st.sidebar.image("Stock_Logo.png", width=200)
     
-    #page = st.sidebar.radio("Go to", ["Home", "Stock Analysis", "AI Assistant", "Stock Comparison", "Portfolio Simulator", "Backtesting"])
-    page = st.sidebar.radio("Go to", ["Home", "Stock Analysis", "AI Assistant", "Stock Comparison", "Backtesting"])
-
-
+    # Define page options
+    page_options = ["Home", "Stock Analysis", "AI Assistant", "Stock Comparison", "Backtesting"]
+    
+    # Create radio button with session state synchronization
+    page = st.sidebar.radio(
+        "Go to", 
+        page_options,
+        index=page_options.index(st.session_state.page)
+    )
+    
+    # Update session state when radio changes
+    if page != st.session_state.page:
+        st.session_state.page = page
+        st.rerun()
+    
     # Main content area
     with st.container():
-        if page == "Home":
+        if st.session_state.page == "Home":
             display_home()
-        elif page == "Stock Analysis":
+        elif st.session_state.page == "Stock Analysis":
             StockAnalysisDashboard().run()
-        elif page == "AI Assistant":
+        elif st.session_state.page == "AI Assistant":
             ai_assistant = AIFinancialAssistant()
             ai_assistant.run()
-        elif page == "Stock Comparison":
+        elif st.session_state.page == "Stock Comparison":
             StockComparisonAgent().run()
-        elif page == "Portfolio Simulator":
-            PortfolioSimulator().run()
-        elif page == "Backtesting":
+        elif st.session_state.page == "Backtesting":
             backtesting = BacktestingAgent()
             backtesting.run()
 
@@ -141,14 +154,14 @@ def display_home():
             st.session_state.page = "Stock Comparison"
             st.rerun()
 
-        st.markdown("### 💼 Portfolio Simulator")
+        st.markdown("### ⚡ Backtesting")
         st.write("""
         - Test investment strategies
         - Risk analysis
         - Performance tracking
         """)
-        if st.button("Simulate Portfolio", key="portfolio"):
-            st.session_state.page = "Portfolio Simulator"
+        if st.button("Backtest Strategies", key="backtest"):
+            st.session_state.page = "Backtesting"
             st.rerun()
 
 if __name__ == "__main__":
