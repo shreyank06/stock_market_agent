@@ -68,7 +68,9 @@ def main():
     # Add logo to sidebar
     st.sidebar.image("Stock_Logo.png", width=200)
     
-    page = st.sidebar.radio("Go to", ["Home", "Stock Analysis", "AI Assistant", "Stock Comparison", "Portfolio Simulator", "Backtesting"])
+    #page = st.sidebar.radio("Go to", ["Home", "Stock Analysis", "AI Assistant", "Stock Comparison", "Portfolio Simulator", "Backtesting"])
+    page = st.sidebar.radio("Go to", ["Home", "Stock Analysis", "AI Assistant", "Stock Comparison", "Backtesting"])
+
 
     # Main content area
     with st.container():
