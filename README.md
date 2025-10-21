@@ -1,4 +1,4 @@
-# AI-Financial Agent with gpt4o-mini🤑
+# AI-Financial Agent with gpt4o-mini
 ### Prerequisites
 Before you begin, ensure you have Python 3.10 or higher installed on your system.
 
