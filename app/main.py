@@ -116,9 +116,9 @@ def display_home():
         - Price predictions using ML
         - Financial metrics and ratios
         """)
-    if st.button("Analyze Stocks", key="analyze"):
-        st.sidebar.radio("Go to", ["Home", "Stock Analysis", "AI Assistant", "Stock Comparison", "Portfolio Simulator", "Backtesting"], index=1)
-
+        if st.button("Analyze Stocks", key="analyze"):
+            st.session_state.page = "Stock Analysis"
+            st.rerun()
 
         st.markdown("### 🤖 AI Assistant")
         st.write("""
